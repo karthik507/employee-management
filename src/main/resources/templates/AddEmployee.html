@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script
+	src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+<!-- Default theme -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+<!-- Semantic UI theme -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+<!-- Bootstrap theme -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
+
+<!-- 
+    RTL version
+-->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.rtl.min.css" />
+<!-- Default theme -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.rtl.min.css" />
+<!-- Semantic UI theme -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.rtl.min.css" />
+<!-- Bootstrap theme -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css" />
+<style>
+button.ajs-close {
+	display: none !important;
+}
+
+.ajs-header {
+	background-color: black !important;
+	color: white !important;
+}
+
+.ajs-content {
+	background-color: black !important;
+	color: green !important;
+}
+
+.ajs-footer {
+	background-color: black !important;
+}
+
+.ajs-dialog {
+	background-color: black !important;
+}
+</style>
+<script>
+	function saveEmployee() {
+		var inputPayload = {
+			"name" : $("#usr").val(),
+			"department" : $("#departmentId").val(),
+			"age" : $("#age").val(),
+			"contact" : $("#contactId").val(),
+			"salary" : $("#salaryId").val()
+		}
+		var inputPayloadString = JSON.stringify(inputPayload);
+		jQuery.ajax({
+			type : 'POST',
+			cache : true,
+			async : false,
+			contentType : 'application/json',
+			dataType : 'json',
+			url : "http://localhost:9009/employee",
+			data : inputPayloadString,
+			success : function(data) {
+				clearAllFormData();
+				alertify.alert('Confirmation', 'Suceesfully Created!!',
+						function() {
+						});
+			}
+		});
+
+	}
+
+	function clearAllFormData() {
+		$("#usr").val('');
+		$("#departmentId").val('');
+		$("#age").val('');
+		$("#contactId").val('');
+		$("#salaryId").val('');
+	}
+
+	function editEmployeeInfo() {
+
+		alert("++++++++++++++++++++++++++++++++")
+
+	}
+
+	function deleteEmployeeInfo() {
+
+		alert("++++++++   delete    +++++++++")
+
+	}
+
+	function onClickBack() {
+		window.location.assign("http://localhost:9009/page")
+	}
+</script>
+</head>
+<body style="background-color: black;">
+
+
+
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<ul class="navbar-nav">
+			<li class="nav-item active"><a class="nav-link" href="#"></a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Add
+					Employee</a></li>
+
+		</ul>
+	</nav>
+
+	<br />
+	<div class="container">
+		<div class="card">
+			<div class="card-header">Add Employee Information</div>
+			<div class="card-body">
+
+
+
+
+
+
+				<div class="container-fluid">
+
+					<div class="row">
+						<div class="col-sm-7">
+							<div class="form-group">
+								<label for="usr">Name:</label> <input type="text"
+									class="form-control" id="usr">
+							</div>
+						</div>
+						<div class="col-sm-5">
+							<div class="form-group">
+								<label>Age</label> <input type="text" class="form-control"
+									id="age">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-7">
+							<div class="form-group">
+								<label>Salary</label> <input type="text" class="form-control"
+									id="salaryId">
+							</div>
+						</div>
+						<div class="col-sm-5">
+							<div class="form-group">
+								<label>Department</label> <input type="text"
+									class="form-control" id="departmentId">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-7">
+							<div class="form-group">
+								<label>Contact</label> <input type="text" class="form-control"
+									id="contactId">
+							</div>
+						</div>
+						<div class="col-sm-5"></div>
+					</div>
+				</div>
+
+
+
+
+			</div>
+			<div class="card-footer">
+				<button type="button" class="btn btn-primary" style="float: left"
+					onclick="saveEmployee()">Save Employee Data</button>
+				<button type="button" class="btn btn-primary" style="float: right"
+					onclick="onClickBack()">Back</button>
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+</body>
+</html>

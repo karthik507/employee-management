@@ -1,0 +1,26 @@
+
+create table employees_info (
+  emp_id integer not null auto_increment,
+  age integer,
+  contact bigint,
+  department varchar(255),
+  name varchar(255),
+  salary double precision,
+  primary key (emp_id)
+);
+
+
+--saving the Employee information
+
+insert into employees_info (
+  age, contact, department, name, salary
+)
+values
+  (?, ?, ?, ?, ?)
+
+ -- deleting the particular employee
+
+  delete from
+    employees_info
+  where
+    emp_id = ?
